@@ -1,0 +1,27 @@
+﻿# ===== 构建产物 =====
+bin/
+obj/
+publish/
+*.pdb
+RoboCopyUI.exe
+
+# ===== NuGet / 本地缓存 =====
+.nuget/
+packages/
+
+# ===== IDE / 编辑器 =====
+.vs/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# ===== 工具目录 =====
+.agents/
+.codex/
+
+# ===== 系统文件 =====
+Thumbs.db
+Desktop.ini
+.DS_Store
