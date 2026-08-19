@@ -1,11 +1,24 @@
-﻿# ROBOCOPY 快速复制工具
+# ROBOCOPY 快速复制工具
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/LIN-C-PY/RoboCopyUI)](https://github.com/LIN-C-PY/RoboCopyUI/releases/latest)
 
 为 Windows 自带的 `robocopy` 打造的原生 **WPF 桌面程序**（Fluent Design 风格，类似 OpenMediaConvert / FastCopy）。
 
-## 桌面程序（推荐）
+## 📥 下载（推荐）
 
-- **位置**：桌面 `RoboCopyUI.exe`（单文件、无依赖，双击即用）
-- **源码**：`RoboCopyWpf/`（WPF + XAML，`dotnet publish` 可重新编译）
+从 [GitHub Releases](https://github.com/LIN-C-PY/RoboCopyUI/releases/latest) 获取最新版：
+
+| 版本 | 大小 | 说明 |
+| --- | --- | --- |
+| [RoboCopyUI-standalone.exe](https://github.com/LIN-C-PY/RoboCopyUI/releases/latest/download/RoboCopyUI-standalone.exe) | ~63 MB | ⭐ **免安装版**，内置运行时，任何 Windows 10/11 双击即用 |
+| [RoboCopyUI.exe](https://github.com/LIN-C-PY/RoboCopyUI/releases/latest/download/RoboCopyUI.exe) | ~200 KB | 轻量版，需已安装 .NET 8 桌面运行时 |
+
+> 普通用户直接下载**免安装版**即可，无需安装任何环境；开发者可用轻量版。
+
+## 源码
+
+- 源码位于 `RoboCopyWpf/`（WPF + XAML，可用 `dotnet publish` 重新编译，见下文「重新编译」）。
 
 ### 界面特色
 
@@ -26,7 +39,7 @@
 
 ### 使用方法
 
-1. 双击桌面 `RoboCopyUI.exe`
+1. 从 [Releases](https://github.com/LIN-C-PY/RoboCopyUI/releases/latest) 下载（免安装版直接双击运行）
 2. 「快速复制」页填源目录、目标目录，选复制模式
 3. 「高级选项」页按需勾选开关
 4. 点「▶ 开始复制」，日志实时显示进度
@@ -42,23 +55,30 @@
 
 ## 重新编译
 
+框架依赖版（单文件、需 .NET 8 运行时）：
+
 ```powershell
 dotnet publish "RoboCopyWpf\RoboCopyWpf.csproj" -c Release -r win-x64 --self-contained false -p:PublishSingleFile=true -p:NuGetAudit=false -o RoboCopyWpf\publish
+```
+
+免安装版（自包含、内置运行时）：
+
+```powershell
+dotnet publish "RoboCopyWpf\RoboCopyWpf.csproj" -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -p:NuGetAudit=false -o RoboCopyWpf\publish-standalone
 ```
 
 ## 文件结构
 
 ```
 ROBOCOPY UI/
-├── RoboCopyUI.exe        # 桌面程序（已复制到桌面）
-├── RoboCopyWpf/          # WPF 工程源码
+├── RoboCopyWpf/            # WPF 工程源码
 │   ├── MainWindow.xaml(.cs)
 │   ├── Themes/FluentStyles.xaml
 │   ├── App.xaml(.cs)
-│   └── publish/          # 发布产物（单文件 exe）
-├── index.html            # 网页版工具
-├── offscreen.png         # 界面预览图
-└── README.md             # 本说明
+│   └── publish*/           # 发布产物
+├── THIRD_PARTY_NOTICES.md  # 第三方声明
+├── index.html              # 网页版工具
+└── offscreen.png           # 界面预览图
 ```
 
 ## 版权与致谢
@@ -66,3 +86,10 @@ ROBOCOPY UI/
 - 本工具代码为原创，不包含第三方开源库；运行环境使用 **Microsoft .NET 8 / WPF**（MIT License）与 Windows 自带 **robocopy.exe**。
 - UI 视觉风格参考了本地项目 **OpenMediaConvert** 的 Fluent 深色主题设计（配色、卡片与导航布局），代码为独立编写。
 - 详细第三方声明见 **[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)**。
+
+## 开源许可
+
+本项目采用 **MIT License** 开源，详见 [LICENSE](LICENSE) 文件。
+Copyright (c) 2026 LIN-C-PY
+
+

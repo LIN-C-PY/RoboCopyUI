@@ -1,4 +1,4 @@
-﻿# 第三方声明（THIRD-PARTY NOTICES）
+# 第三方声明（THIRD-PARTY NOTICES）
 
 本工具由原创代码构成（C# / XAML / HTML / CSS / JS），不包含任何第三方开源库、组件或素材文件。
 以下为运行与界面中所涉及的系统组件及设计参考的如实说明：
